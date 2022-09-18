@@ -2858,10 +2858,7 @@ MonoBehaviour:
   target: {fileID: 0}
   agent: {fileID: 9111424032896234531}
   animator: {fileID: 9111424033226534148}
-  ouchSounds:
-  - {fileID: 8300000, guid: f7f8ced7212407d4b892350c766a0e97, type: 3}
-  - {fileID: 8300000, guid: 815c21db3f524044b9324649d5dd1139, type: 3}
-  - {fileID: 8300000, guid: 3968c0f1bb3a4454fac12184cbc503fb, type: 3}
+  ouchSounds: []
 --- !u!82 &5973628657617264660
 AudioSource:
   m_ObjectHideFlags: 0

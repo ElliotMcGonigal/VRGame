@@ -60,7 +60,7 @@ public class gusScript : MonoBehaviour
 //for this to work both playerObject(soon becket bullets) and Gus need colliders, playerObject(or Becket bullets) must have rigid body, and the Gus must have their trigger checked.
 void OnTriggerEnter (Collider col)
   {
-    // GetComponent<CapsuleCollider>().enabled = false;
+    GetComponent<CapsuleCollider>().enabled = false;
     animator.SetBool("isWalking", false);
     //destroy this gus in 2 seconds.
     DestroyGus();
