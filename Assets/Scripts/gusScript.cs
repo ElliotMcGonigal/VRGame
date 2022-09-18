@@ -6,6 +6,7 @@ using UnityEngine.AI;
 
 public class gusScript : MonoBehaviour
 {
+  // declaring variables
     public Transform target;
     public UnityEngine.AI.NavMeshAgent agent;
     public Animator animator;
@@ -13,10 +14,15 @@ public class gusScript : MonoBehaviour
     
     void Start()
     {
+      //makes sure the animation takes over gus
     animator = GetComponent<Animator>();
+    //sets Gus's destination to Player
     target = GameObject.Find("playerObject").transform;
+    // walking AI
     NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
+    //distance from Gus to Player, only important to gus
     dist = agent.remainingDistance;
+    // tells animator to start walking, after half a second of idle
     animator.SetBool("isWalking", true);
 
     }
@@ -27,11 +33,13 @@ public class gusScript : MonoBehaviour
     void Update()
     
   {
-
+    //on each frame tells gus where to walk
     agent.SetDestination(target.position);
+    //gus checking their distance from player
     Check();
   }
 
+//gus checking distance
   void Check()
   {
     if(Vector3.Distance(agent.destination, agent.transform.position) <= agent.stoppingDistance)
@@ -39,6 +47,7 @@ public class gusScript : MonoBehaviour
       if(!agent.hasPath||agent.velocity.sqrMagnitude==0f)
       {
           print ("at destination");
+          //when gus gets to player, theyll stop walking
           animator.SetBool("isWalking", false);
           
       }
@@ -62,7 +71,7 @@ void OnTriggerEnter (Collider col)
      //set the guss position equal to these new coordinates
     gus.transform.position = new Vector3 (randomX, constantY, randomZ);
 
-    //if the gus gets positioned less than or equal to 3 scene units away from the camera we won't be able to shoot it
+    //if the gus gets positioned less than or equal to 3 scene units away from the camera we won't be able to cheer them up 
     //so keep repositioning the gus until it is greater than 3 scene units away. 
     while (Vector3.Distance (gus.transform.position, Camera.main.transform.position) <= 3) {
       
