@@ -14,7 +14,7 @@ public class gusScript : MonoBehaviour
     void Start()
     {
     animator = GetComponent<Animator>();
-    target = GameObject.Find("Sphere").transform;
+    target = GameObject.Find("playerObject").transform;
     NavMeshAgent agent = GetComponent<UnityEngine.AI.NavMeshAgent>();
     dist = agent.remainingDistance;
     animator.SetBool("isWalking", true);
@@ -45,32 +45,32 @@ public class gusScript : MonoBehaviour
     }
   }
 
-// void OnTriggerEnter (Collider col)
+void OnTriggerEnter (Collider col)
 
-//   {
-//     GetComponent<CapsuleCollider>().enabled = false;
-//     animator.SetBool("isWalking", false);
-//     //destroy this gus in six seconds.
-//     Destroy (gameObject, 6);
-//     //instantiate a new gus
-//     // GameObject gus = Instantiate(Resources.Load("Gus", typeof(GameObject))) as GameObject;
+  {
+    // GetComponent<CapsuleCollider>().enabled = false;
+    animator.SetBool("isWalking", false);
+    //destroy this gus in six seconds.
+    Destroy (gameObject, 2);
+    //instantiate a new gus
+    GameObject gus = Instantiate(Resources.Load("Gus", typeof(GameObject))) as GameObject;
 
-//     // //set the coordinates for a new vector 3
-//     // float randomX = UnityEngine.Random.Range (-12f,12f);
-//     // float constantY = .01f;
-//     // float randomZ = UnityEngine.Random.Range (-13f,13f);
-//     // //set the guss position equal to these new coordinates
-//     // gus.transform.position = new Vector3 (randomX, constantY, randomZ);
+    // //set the coordinates for a new vector 3
+    float randomX = UnityEngine.Random.Range (-12f,12f);
+    float constantY = .01f;
+    float randomZ = UnityEngine.Random.Range (-13f,13f);
+     //set the guss position equal to these new coordinates
+    gus.transform.position = new Vector3 (randomX, constantY, randomZ);
 
-//     // //if the gus gets positioned less than or equal to 3 scene units away from the camera we won't be able to shoot it
-//     // //so keep repositioning the gus until it is greater than 3 scene units away. 
-//     // while (Vector3.Distance (gus.transform.position, Camera.main.transform.position) <= 3) {
+    //if the gus gets positioned less than or equal to 3 scene units away from the camera we won't be able to shoot it
+    //so keep repositioning the gus until it is greater than 3 scene units away. 
+    while (Vector3.Distance (gus.transform.position, Camera.main.transform.position) <= 3) {
       
-//     //   randomX = UnityEngine.Random.Range (-12f,12f);
-//     //   randomZ = UnityEngine.Random.Range (-13f,13f);
+    randomX = UnityEngine.Random.Range (-12f,12f);
+    randomZ = UnityEngine.Random.Range (-13f,13f);
 
-//     //   gus.transform.position = new Vector3 (randomX, constantY, randomZ);
-//     // }
-//     }
+    gus.transform.position = new Vector3 (randomX, constantY, randomZ);
+    }
+    }
 
 }
