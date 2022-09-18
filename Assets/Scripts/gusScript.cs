@@ -11,6 +11,8 @@ public class gusScript : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent agent;
     public Animator animator;
     float dist;
+    [SerializeField] AudioClip[] ouchSounds;
+    AudioSource myAudioSource;
 
     
     void Start()
@@ -25,7 +27,7 @@ public class gusScript : MonoBehaviour
     dist = agent.remainingDistance;
     // tells animator to start walking, after half a second of idle
     animator.SetBool("isWalking", true);
-
+    myAudioSource = GetComponent<AudioSource>();
     }
 
     
@@ -60,17 +62,16 @@ void OnTriggerEnter (Collider col)
   {
     // GetComponent<CapsuleCollider>().enabled = false;
     animator.SetBool("isWalking", false);
-    //destroy this gus in six seconds.
-    Destroy (gameObject, 2);
-    
+    //destroy this gus in 2 seconds.
+    DestroyGus();
+
     //instantiate a new gus
     GameObject gus = Instantiate(Resources.Load("Gus", typeof(GameObject))) as GameObject;
-
-    // //set the coordinates for a new vector 3
+    //set the coordinates for a new vector 3
     float randomX = UnityEngine.Random.Range (-12f,12f);
     float constantY = .01f;
     float randomZ = UnityEngine.Random.Range (-13f,13f);
-     //set the guss position equal to these new coordinates
+    //set the guss position equal to these new coordinates
     gus.transform.position = new Vector3 (randomX, constantY, randomZ);
 
     //if the gus gets positioned less than or equal to 3 scene units away from the camera we won't be able to cheer them up 
@@ -84,7 +85,16 @@ void OnTriggerEnter (Collider col)
     }
   }
 
+  private void DestroyGus()
+  {
+    PlayDestroyGusSFX();
+    Destroy(gameObject, 2);
+  }
 
-
+  private void PlayDestroyGusSFX()
+  {
+    AudioClip clip = ouchSounds[UnityEngine.Random.Range(0, ouchSounds.Length)];
+    myAudioSource.PlayOneShot(clip);  
+  }
 
 }
