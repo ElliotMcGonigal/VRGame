@@ -2143,7 +2143,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: ccc50d631d14df84a982c4f4acd00013, type: 2}
+  - {fileID: 2100000, guid: 53cf5c0ff424ff9458c56526516b63ec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2857,6 +2857,7 @@ MonoBehaviour:
   target: {fileID: 0}
   agent: {fileID: 9111424032896234531}
   animator: {fileID: 9111424033226534148}
+  sparklesVFX: {fileID: 100000, guid: d107fe4f977fe454cb967b613868d0e3, type: 3}
 --- !u!1 &9111424033236185316
 GameObject:
   m_ObjectHideFlags: 0

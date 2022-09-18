@@ -11,6 +11,7 @@ public class gusScript : MonoBehaviour
     public UnityEngine.AI.NavMeshAgent agent;
     public Animator animator;
     float dist;
+
     
     void Start()
     {
@@ -54,13 +55,14 @@ public class gusScript : MonoBehaviour
     }
   }
 
+//for this to work both playerObject(soon becket bullets) and Gus need colliders, playerObject(or Becket bullets) must have rigid body, and the Gus must have their trigger checked.
 void OnTriggerEnter (Collider col)
-
   {
     // GetComponent<CapsuleCollider>().enabled = false;
     animator.SetBool("isWalking", false);
     //destroy this gus in six seconds.
     Destroy (gameObject, 2);
+    
     //instantiate a new gus
     GameObject gus = Instantiate(Resources.Load("Gus", typeof(GameObject))) as GameObject;
 
@@ -80,6 +82,9 @@ void OnTriggerEnter (Collider col)
 
     gus.transform.position = new Vector3 (randomX, constantY, randomZ);
     }
-    }
+  }
+
+
+
 
 }
