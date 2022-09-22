@@ -45,7 +45,7 @@ public class affirmationGun : MonoBehaviour
     myAudioSource = GetComponent<AudioSource>();
 
     isShooting = false;
-    InvokeRepeating("Shoot", 7.0f, 2.0f);
+    InvokeRepeating("Shoot", 10.0f, 3.0f);
     }
 
     private void Shoot()
