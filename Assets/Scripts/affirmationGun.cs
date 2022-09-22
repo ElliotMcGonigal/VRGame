@@ -17,7 +17,6 @@ public class affirmationGun : MonoBehaviour
 
     protected virtual void Awake()
     {
-            Debug.Log("test awake");
         interactableWeapon = GetComponent<XRGrabInteractable>();
         rigidBody = GetComponent<Rigidbody>();
     //    interactableWeapon.onActivate.AddListener(StartShooting);
@@ -39,7 +38,6 @@ public class affirmationGun : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    Debug.Log("test start");
     gun = GameObject.Find("Gun").gameObject;
     //gun needs affirmationGun Script, attached becket noises and Audio Source component
     spawnPoint = GameObject.Find("spawnPoint").gameObject;
@@ -47,13 +45,11 @@ public class affirmationGun : MonoBehaviour
     myAudioSource = GetComponent<AudioSource>();
 
     isShooting = false;
-    Debug.Log("test end start");
-    InvokeRepeating("Shoot", 3.0f, 0.5f);
+    InvokeRepeating("Shoot", 7.0f, 2.0f);
     }
 
     private void Shoot()
     {
-    Debug.Log("test");
     //Bullet assets needs to be in resouces folder to intantiate
 
     AudioClip clip = becketSounds[UnityEngine.Random.Range(0, becketSounds.Length)];
