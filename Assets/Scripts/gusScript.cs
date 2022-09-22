@@ -28,6 +28,7 @@ public class gusScript : MonoBehaviour
     // tells animator to start walking, after half a second of idle
     animator.SetBool("isWalking", true);
     myAudioSource = GetComponent<AudioSource>();
+    SpawnPoint = GameObject.Find("SpawnPoint").gameObject;
     }
 
     
