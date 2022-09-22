@@ -49,7 +49,7 @@ public class gusScript : MonoBehaviour
     {
       if(!agent.hasPath||agent.velocity.sqrMagnitude==0f)
       {
-          //print ("at destination");
+          
           //when gus gets to player, theyll stop walking
           animator.SetBool("isWalking", false);
           
@@ -60,7 +60,7 @@ public class gusScript : MonoBehaviour
 //for this to work both playerObject(soon becket bullets) and Gus need colliders, playerObject(or Becket bullets) must have rigid body, and the Gus must have their trigger checked.
 void OnTriggerEnter (Collider col)
   {
-    // GetComponent<CapsuleCollider>().enabled = false;
+    
     animator.SetBool("isWalking", false);
     //destroy this gus in 2 seconds.
     DestroyGus();
@@ -76,7 +76,7 @@ void OnTriggerEnter (Collider col)
 
     //if the gus gets positioned less than or equal to 3 scene units away from the camera we won't be able to cheer them up 
     //so keep repositioning the gus until it is greater than 3 scene units away. 
-    while (Vector3.Distance (gus.transform.position, Camera.main.transform.position) <= 3) {
+    while (Vector3.Distance (gus.transform.position, Camera.main.transform.position) <= 1) {
       
     randomX = UnityEngine.Random.Range (-12f,12f);
     randomZ = UnityEngine.Random.Range (-13f,13f);
