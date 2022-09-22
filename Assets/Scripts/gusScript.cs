@@ -49,7 +49,7 @@ public class gusScript : MonoBehaviour
     {
       if(!agent.hasPath||agent.velocity.sqrMagnitude==0f)
       {
-          print ("at destination");
+          //print ("at destination");
           //when gus gets to player, theyll stop walking
           animator.SetBool("isWalking", false);
           
@@ -87,7 +87,7 @@ void OnTriggerEnter (Collider col)
 
   private void DestroyGus()
   {
-    PlayDestroyGusSFX();
+    //PlayDestroyGusSFX();
     Destroy(gameObject, 1);
   }
 
