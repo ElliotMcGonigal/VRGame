@@ -49,7 +49,7 @@ public class gusScript : MonoBehaviour
     {
       if(!agent.hasPath||agent.velocity.sqrMagnitude==0f)
       {
-          
+          //print ("at destination");
           //when gus gets to player, theyll stop walking
           animator.SetBool("isWalking", false);
           
@@ -68,21 +68,22 @@ void OnTriggerEnter (Collider col)
     //instantiate a new gus
     GameObject gus = Instantiate(Resources.Load("Gus", typeof(GameObject))) as GameObject;
     //set the coordinates for a new vector 3
-    float randomX = UnityEngine.Random.Range (-12f,12f);
-    float constantY = .01f;
-    float randomZ = UnityEngine.Random.Range (-13f,13f);
+    // float randomX = UnityEngine.Random.Range (-12f,12f);
+    // float constantY = .01f;
+    // float randomZ = UnityEngine.Random.Range (-13f,13f);
     //set the guss position equal to these new coordinates
-    gus.transform.position = new Vector3 (randomX, constantY, randomZ);
+    gus.transform.rotation = SpawnPoint.transform.rotation;
+    gus.transform.position =  SpawnPoint.transform.position;
 
     //if the gus gets positioned less than or equal to 3 scene units away from the camera we won't be able to cheer them up 
     //so keep repositioning the gus until it is greater than 3 scene units away. 
-    while (Vector3.Distance (gus.transform.position, Camera.main.transform.position) <= 1) {
+    // while (Vector3.Distance (gus.transform.position, Camera.main.transform.position) <= 1) {
       
-    randomX = UnityEngine.Random.Range (-12f,12f);
-    randomZ = UnityEngine.Random.Range (-13f,13f);
+    // randomX = UnityEngine.Random.Range (-12f,12f);
+    // randomZ = UnityEngine.Random.Range (-13f,13f);
 
-    gus.transform.position = new Vector3 (randomX, constantY, randomZ);
-    }
+    // gus.transform.position = new Vector3 (randomX, constantY, randomZ);
+    // }
   }
 
   private void DestroyGus()
