@@ -13,6 +13,7 @@ public class gusScript : MonoBehaviour
     float dist;
     [SerializeField] AudioClip[] ouchSounds;
     AudioSource myAudioSource;
+    private GameObject SpawnPoint;
 
     
     void Start()
